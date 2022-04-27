@@ -1,0 +1,44 @@
+<section>
+  <%= render partial: "partials/nav.html.erb" %>
+  <div class="mt-10 profile-container">
+    <div class="flex items-center justify-between w-52 sm:ml-20">
+      <div
+        class="border-solid border-3 border-gray-400 py-1 px-4 bg-purple-200 w-32 h-32 flex items-center justify-center text-3xl rounded-full text-white"
+      >
+        <strong class="cursor-pointer"> <%= @user.name.slice(0, 1) %> </strong>
+      </div>
+      <div>
+        <%= tag.h1 @user.name, class: "text-3xl -ml-1" %>
+        <%= tag.strong "#{@user.posts.length} posts", class: "mt-2 block" %>
+      </div>
+    </div>
+
+  <div class="grid lg:grid-cols-2 2xl:grid-cols-3 grid-cols-1 justify-items-center mt-20 m-auto justify-self-center">
+    <% @user.posts.map do |item| %>
+      <div class="mb-10 relative cursor-pointer">
+        <%= image_tag item.image.url, class: "image-post" %>
+
+        <div class="items-center gap-8 justify-center absolute left-0 right-0 top-0 bottom-0 hidden">
+          <div class="flex items-center gap-3">
+            <% if item.likes.find_by(user_id: Current.user.id) %>
+            <%= button_to "❤️", "/like/#{item.id}", method: :delete, class: "cursor-pointer" %>
+            <% else %>
+            <%= button_to "♡", "/like/#{item.id}", method: :post, class: "cursor-pointer" %>
+            <% end %>
+            <%= tag.span "#{item.likes.length}",  id: "like", class: "text-sm font-bold" %>
+          </div>
+
+          <div class="flex items-center gap-2">
+            <%= image_tag "https://icongr.am/octicons/comment.svg?size=16&color=ffffff" %>
+            <%= item.comments.length %>
+          </div>
+        </div>
+      </div>
+    <% end %>
+  <div>
+  </div>
+</section>
+
+<div id="post-modal" class="hidden justify-center items-center p-10 absolute right-0 left-0 top-0 bottom-0 bg-opacity-30 bg-black">
+  <%= render partial: "partials/form_post.html.erb" %>
+</div>

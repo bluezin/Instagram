@@ -1,0 +1,32 @@
+<div class="flex justify-center gap-20 mt-20">
+  <div class="relative lg:block hidden">
+    <%= image_tag "https://www.instagram.com/static/images/homepage/phones/home-phones-2x.png/cbc7174b4f05.png", class: "image-login-general" %>
+    <%= image_tag "https://www.instagram.com/static/images/homepage/screenshots/screenshot3-2x.png/fe2540684ab2.png", class: "image-login absolute top-4 left-32" %>
+  </div>
+  <div class="container-login">
+    <div class="border-2 border-solid border-gray-100 p-10">
+      <h1 class="font-bold text-4xl home-h1 sm:m-auto mb-4 text-center">
+        Instagram
+      </h1>
+      <div class="mt-5">
+        <%= form_with url: users_sign_in_path, local: true do |form| %>
+          <%= form.text_field :email, class: "bg-gray-100 w-4/6 m-auto block rounded-md p-1.5 outline-none", placeholder: "Email" %>
+          <%= form.password_field :password, class: "bg-gray-100 w-4/6 m-auto block rounded-md p-1.5 mt-5 outline-none", placeholder: "Password" %>
+          <%= form.button "Log in", class: "bg-blue-400 p-2 rounded w-4/6 m-auto
+          block mt-4 text-white font-bold" %>
+        <% end %>
+      </div>
+
+      <p class="text-center mt-10">OR</p>
+      <%= link_to "Forgotten your password?", "", class: "text-blue-200 text-sm text-center block mt-5" %>
+    </div>
+    <div
+      class="border-2 border-solid border-gray-100 p-5 text-sm mt-10 text-center"
+    >
+      <strong>
+        Don't have an account? <%= link_to "Sign up", users_register_path, class:
+        "text-blue-400" %>
+      </strong>
+    </div>
+  </div>
+</div>

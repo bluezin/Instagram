@@ -1,0 +1,56 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+body {
+  overflow-x: hidden;
+}
+
+.home-h1 {
+  font-family: "Cookie", cursive;
+}
+
+.image-login-general {
+  height: 543.84px;
+}
+
+.image-login {
+  height: 480px;
+}
+
+.container-login {
+  width: 400px;
+}
+
+.container-posts {
+  width: 600px;
+}
+
+.image-post {
+  width: 350px;
+  height: 350px;
+  transition: all 1s;
+}
+
+.image-post:hover ~ div {
+  display: flex;
+  background-color: rgba(0, 0, 0, 0.5);
+  color: white;
+}
+
+.profile-container {
+  width: 80%;
+  margin: 20px auto;
+}
+
+@media screen and (max-width: 480px) {
+  .container-login {
+    width: 80%;
+  }
+}
+
+@media screen and (max-width: 680px) {
+  .container-posts {
+    width: 90%;
+  }
+}

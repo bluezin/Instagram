@@ -1,0 +1,34 @@
+<div
+  class="p-2 bg-white shadow-md items-center sm:flex md:justify-around justify-between"
+>
+  <h1 class="font-bold text-4xl home-h1 sm:m-auto mb-4">Instagram</h1>
+  <input
+    placeholder="🔍 Search"
+    class="p-1 bg-gray-100 outline-none rounded-md sm:w-1/6 w-5/6 m-auto block"
+  />
+  <div class="flex gap-5 justify-center sm:m-auto mt-4 relative">
+    <a href="/">
+      <%= image_tag "https://icongr.am/octicons/home-fill.svg?size=30&color=currentColor", style: "cursor: pointer" %>
+    </a>
+    <div onclick="document.getElementById('post-modal').style.display = 'flex'">
+      <%= image_tag "https://icongr.am/feather/plus-square.svg?size=30&color=currentColor", style: "cursor: pointer" %>
+    </div>
+    <div
+      class="border-solid border-3 border-gray-400 py-1 px-4 bg-green-50"
+      onclick="document.getElementById('info').style.display === 'none' ? document.getElementById('info').style.display = 'block' : document.getElementById('info').style.display = 'none'"
+    >
+      <strong class="cursor-pointer"> <%= @user.name.slice(0, 1) %> </strong>
+    </div>
+
+    <div
+      class="hidden absolute top-12 left-24 bg-white shadow-lg w-4/6 box-border text-center p-2"
+      id="info"
+    >
+      <%= link_to "Profile", "/profile", class: "block" %>
+      <div class="border-t-2 mt-4 border-gray-200 border-solid">
+        <%= button_to "Logout", users_logout_path, method: :delete, class:
+        "cursor-pointer" %>
+      </div>
+    </div>
+  </div>
+</div>

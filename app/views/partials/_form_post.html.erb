@@ -1,0 +1,17 @@
+<%= form_with  url: post_create_path, locale: true, class: "bg-white p-4 w-3/6 m-auto flex justify-center flex-col relative" do |form| %>
+  <p onclick="document.getElementById('post-modal').style.display = 'none'" class="absolute right-5 top-4 cursor-pointer">X</p>
+  <strong class="cursor-pointer mb-5 flex items-center">
+    <span class="py-1 px-3 rounded-full mr-4 bg-purple-300 flex justify-center items-center">
+      <%=  @user.name.slice(0, 1) %>
+    </span>
+    <%= @user.name %>
+  </strong>
+
+  <%= form.text_field :description, placeholder: "Description ..." %>
+
+  <div class="mt-10">
+    <%= form.file_field :image %>
+  </div>
+
+  <%= form.button "Create post", onclick: "document.getElementById('post-modal').style.display = 'none'", class: "p-2 bg-blue-500 mt-5 text-white" %>
+<% end %>
