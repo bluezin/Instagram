@@ -1,4 +1,6 @@
 class ApplicationController < ActionController::Base
+  protect_from_forgery with: :exception
+  include UsersHelper
   before_action :current_user
 
   def authenticate_user!

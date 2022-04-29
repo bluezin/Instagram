@@ -18,7 +18,10 @@
       </div>
 
       <p class="text-center mt-10">OR</p>
-      <%= link_to "Forgotten your password?", "", class: "text-blue-200 text-sm text-center block mt-5" %>
+      <div class="mt-5 flex justify-center gap-2 items-center">
+        <%= image_tag "https://icongr.am/devicon/google-original.svg?size=24&color=currentColor" %>
+        <%= button_to "Sign in with Google", '/auth/google_oauth2', method: :get, class: "cursor-pointer" %>
+      </div>
     </div>
     <div
       class="border-2 border-solid border-gray-100 p-5 text-sm mt-10 text-center"

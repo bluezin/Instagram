@@ -1,12 +1,20 @@
 <section>
   <%= render partial: "partials/nav.html.erb" %>
   <div class="mt-10 profile-container">
-    <div class="flex items-center justify-between w-52 sm:ml-20">
-      <div
-        class="border-solid border-3 border-gray-400 py-1 px-4 bg-purple-200 w-32 h-32 flex items-center justify-center text-3xl rounded-full text-white"
-      >
-        <strong class="cursor-pointer"> <%= @user.name.slice(0, 1) %> </strong>
-      </div>
+    <div class="flex items-center sm:ml-20 gap-4">
+      <% if @user.image.nil? %>
+        <div
+          class="border-solid border-3 border-gray-400 py-1 px-4 w-32 h-32 flex items-center justify-center text-3xl rounded-full text-white bg-purple-300"
+        >
+            <strong class="cursor-pointer"> <%= @user.name.slice(0, 1) %> </strong>
+        </div>
+        <% else %>
+          <div
+            class="border-solid border-3 border-gray-400 py-1 px-4 w-32 h-32 flex items-center justify-center text-3xl rounded-full text-white bg-white"
+          >
+            <%= image_tag @user.image, class: "mt-2 block rounded-full" %>
+          </div>
+        <% end %>
       <div>
         <%= tag.h1 @user.name, class: "text-3xl -ml-1" %>
         <%= tag.strong "#{@user.posts.length} posts", class: "mt-2 block" %>

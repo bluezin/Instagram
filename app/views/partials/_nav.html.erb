@@ -6,18 +6,24 @@
     placeholder="🔍 Search"
     class="p-1 bg-gray-100 outline-none rounded-md sm:w-1/6 w-5/6 m-auto block"
   />
-  <div class="flex gap-5 justify-center sm:m-auto mt-4 relative">
-    <a href="/">
+  <div class="flex justify-center items-center sm:m-auto mt-4 relative">
+    <a href="/" class="mr-4">
       <%= image_tag "https://icongr.am/octicons/home-fill.svg?size=30&color=currentColor", style: "cursor: pointer" %>
     </a>
     <div onclick="document.getElementById('post-modal').style.display = 'flex'">
       <%= image_tag "https://icongr.am/feather/plus-square.svg?size=30&color=currentColor", style: "cursor: pointer" %>
     </div>
     <div
-      class="border-solid border-3 border-gray-400 py-1 px-4 bg-green-50"
+      class="border-solid border-3 border-gray-400 py-1 px-4"
       onclick="document.getElementById('info').style.display === 'none' ? document.getElementById('info').style.display = 'block' : document.getElementById('info').style.display = 'none'"
     >
-      <strong class="cursor-pointer"> <%= @user.name.slice(0, 1) %> </strong>
+      <% if @user.image.nil? %>
+        <div class="bg-purple-300">
+          <strong class="cursor-pointer"> <%= @user.name.slice(0, 1) %> </strong>
+        </div>
+        <% else %>
+          <%= image_tag @user.image, class: "rounded-full w-7 h-7" %>
+        <% end %>
     </div>
 
     <div

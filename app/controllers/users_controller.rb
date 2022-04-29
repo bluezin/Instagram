@@ -35,6 +35,25 @@ class UsersController < ApplicationController
     redirect_to users_new_path
   end
 
+  def omniauth
+    @user = User.find_or_create_by(uid: auth['uid']) do |user|
+      user.name = auth['info']['name']
+      user.email = auth['info']['email']
+      user.image = auth['info']['image']
+      access_token = auth
+      user.google_token = auth.credentials.token
+      refresh_token = auth.credentials.refresh_token
+      user.google_refresh_token = refresh_token if refresh_token.present?
+      user.password = SecureRandom.urlsafe_base64
+    end
+    log_in @user
+    redirect_to "/"
+  end
+
+  def auth
+    request.env['omniauth.auth']
+  end
+
   private
 
   def params_user

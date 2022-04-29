@@ -18,6 +18,11 @@
           block mt-4 text-white font-bold" %>
         <% end %>
       </div>
+      <p class="text-center mt-5">OR</p>
+      <div class="mt-5 flex justify-center gap-2 items-center">
+        <%= image_tag "https://icongr.am/devicon/google-original.svg?size=24&color=currentColor" %>
+        <%= button_to "Sing up with Google", '/auth/google_oauth2', method: :get, class: "cursor-pointer" %>
+      </div>
     </div>
     <div
       class="border-2 border-solid border-gray-100 p-5 text-sm mt-10 text-center"

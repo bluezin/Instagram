@@ -51,6 +51,10 @@ ActiveRecord::Schema.define(version: 2022_04_27_161507) do
     t.string "email", null: false
     t.string "name", null: false
     t.string "password_digest", null: false
+    t.string "uid"
+    t.string "google_token"
+    t.string "google_refresh_token"
+    t.string "image"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
   end
