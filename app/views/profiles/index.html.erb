@@ -32,13 +32,67 @@
             <%= image_tag "https://icongr.am/octicons/comment.svg?size=16&color=ffffff" %>
             <%= item.comments.length %>
           </div>
+
+          <%= link_to "View post", "/profile?post=#{item.id}", class: "p-2 bg-blue-100 text-black absolute right-0 left-0 bottom-0 text-align flex items-center justify-center font-bold" %>
         </div>
       </div>
     <% end %>
   <div>
   </div>
+
+  <div id="post-modal" class="hidden justify-center items-center p-10 absolute right-0 left-0 -bottom-full bg-opacity-30 bg-black" style="top: -900px">
+    <%= render partial: "partials/form_post.html.erb" %>
+  </div>
+
+  <% if params[:post] %>
+  <div id="select-post" class="flex justify-center items-center absolute left-0 right-0 -bottom-full top-0 bg-black bg-opacity-30">
+    <div class="border-solid border-2 border-gray-100 p-2 mt-10 mb-10 bg-white relative m-auto container-posts -top-60">
+      <%= link_to "X", "/profile", class: "text-xl absolute right-2 top-2 cursor-pointer" %>
+      <div class="flex items-center mb-4">
+        <span
+          class="py-1 px-3 rounded-full mr-4 bg-purple-300 flex justify-center items-center"
+        >
+          <%= User.find(@post.user_id).name.slice(0, 1) %>
+        </span>
+        <%= User.find(@post.user_id).name %>
+      </div>
+
+      <div class="w-full"><%= image_tag @post.image.url, class: "m-auto", style: "" %></div>
+
+      <div class="mt-4">
+        <div class="flex items-center gap-3 mb-2">
+          <% if @post.likes.find_by(user_id: Current.user.id) %>
+            <%= button_to "❤️", "/like/#{@post.id}", method: :delete, class: "cursor-pointer" %>
+            <% else %>
+            <%= button_to "♡", "/like/#{@post.id}", method: :post, class: "cursor-pointer" %>
+          <% end %>
+          <%= tag.span "#{@post.likes.length} likes",  id: "like", class: "text-sm font-bold" %>
+        </div>
+        <%= User.find(@post.user_id).name %> <%= tag.strong @post.description %>
+      </div>
+
+      <div class="mt-4">
+        <% @post.comments.order('created_at DESC').map do |item| %>
+        <div class="flex items-center justify-between">
+          <p>
+            <%= tag.strong User.find(item.user_id).name %> <%= item.content %>
+          </p>
+          <%= tag.span Date.parse(item.created_at.to_s), class: "text-sm" %>
+        </div>
+        <% end %>
+        <strong class="block mt-4">
+          <%= "#{@post.comments.length} comments" %>
+        </strong>
+      </div>
+
+      <div>
+        <%= form_with locale: true, url: "/comment/create/#{@post.id}" do |form| %>
+        <%= form.text_field :content, class: "mt-4 p-2 bg-gray-50 w-full rounded-sm border-0.5 border-solid border-blue-50", placeholder: "Content..." %>
+        <%= form.button "Create comment", class: "mt-4 bg-blue-200 p-1 rounded text-sm cursor-pointer font-bold" %> <% end %>
+      </div>
+    </div>
+  </div>
+  <% end %>
 </section>
 
-<div id="post-modal" class="hidden justify-center items-center p-10 absolute right-0 left-0 top-0 bottom-0 bg-opacity-30 bg-black">
-  <%= render partial: "partials/form_post.html.erb" %>
-</div>
+

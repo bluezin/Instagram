@@ -29,7 +29,6 @@ body {
 .image-post {
   width: 350px;
   height: 350px;
-  transition: all 1s;
 }
 
 .image-post:hover ~ div {

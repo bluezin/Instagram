@@ -3,7 +3,7 @@ class LikesController < ApplicationController
     @like = Like.new(user_id: Current.user.id, post_id: params[:post_id])
 
     @like.save
-    redirect_to '/'
+    redirect_to current_page
   end
 
   def destroy
@@ -14,7 +14,7 @@ class LikesController < ApplicationController
 
       if @like_post.present?
         @like_post.destroy
-        redirect_to '/'
+        redirect_to current_page
       end
     end
   end

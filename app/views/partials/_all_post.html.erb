@@ -1,5 +1,5 @@
 <section class="mt-10 m-auto container-posts">
-  <% @posts.map do |post| %>
+  <% @posts.order("created_at DESC").map do |post| %>
   <div class="border-solid border-2 border-gray-100 p-2 m-auto mt-10 mb-10">
     <div class="flex items-center mb-4">
       <span
@@ -10,7 +10,7 @@
       <%= User.find(post.user_id).name %>
     </div>
 
-    <div><%= image_tag post.image.url %></div>
+    <div class="w-full"><%= image_tag post.image.url, class: "m-auto" %></div>
 
     <div class="mt-4">
       <div class="flex items-center gap-3 mb-2">
