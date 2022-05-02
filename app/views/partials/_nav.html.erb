@@ -4,7 +4,7 @@
   <h1 class="font-bold text-4xl home-h1 sm:m-auto mb-4">Instagram</h1>
   <input
     placeholder="🔍 Search"
-    class="p-1 bg-gray-100 outline-none rounded-md sm:w-1/6 w-5/6 m-auto block"
+    class="p-1 bg-gray-100 outline-none rounded-md w-80 m-auto block"
   />
   <div class="flex justify-center items-center sm:m-auto mt-4 relative">
     <a href="/" class="mr-4">
@@ -18,7 +18,7 @@
       onclick="document.getElementById('info').style.display === 'none' ? document.getElementById('info').style.display = 'block' : document.getElementById('info').style.display = 'none'"
     >
       <% if @user.image.nil? %>
-        <div class="bg-purple-300">
+        <div class="bg-purple-300 px-3">
           <strong class="cursor-pointer"> <%= @user.name.slice(0, 1) %> </strong>
         </div>
         <% else %>
