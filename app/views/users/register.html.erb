@@ -9,13 +9,12 @@
         Instagram
       </h1>
       <div class="mt-5">
-        <%= form_with url: users_sign_up_path, model: @user, local: true do |form| %>
+        <%= form_with url: users_sign_up_path, local: true do |form| %>
           <%= form.text_field :name, class: "bg-gray-100 w-4/6 m-auto block rounded-md p-1.5 outline-none mb-5 text-sm", placeholder: "Name" %>
           <%= form.text_field :email, class: "bg-gray-100 w-4/6 m-auto block rounded-md p-1.5 outline-none text-sm", placeholder: "Email" %>
           <%= form.password_field :password, class: "bg-gray-100 w-4/6 m-auto block rounded-md p-1.5 mt-5 outline-none text-sm", placeholder: "Password" %>
           <%= form.password_field :password_confirmation, class: "bg-gray-100 w-4/6 m-auto block rounded-md p-1.5 mt-5 outline-none text-sm", placeholder: "Password confirmation" %>
-          <%= form.button "Sign up", class: "bg-blue-400 p-2 rounded w-4/6 m-auto
-          block mt-4 text-white font-bold" %>
+          <%= form.button "Sign up", class: "bg-blue-400 p-2 rounded w-4/6 m-auto block mt-4 text-white font-bold" %>
         <% end %>
       </div>
       <p class="text-center mt-5">OR</p>

@@ -47,6 +47,12 @@ ActiveRecord::Schema.define(version: 2022_04_27_161507) do
     t.index ["user_id"], name: "index_posts_on_user_id"
   end
 
+  create_table "searches", force: :cascade do |t|
+    t.jsonb "results", default: [], array: true
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+  end
+
   create_table "users", force: :cascade do |t|
     t.string "email", null: false
     t.string "name", null: false
@@ -55,8 +61,10 @@ ActiveRecord::Schema.define(version: 2022_04_27_161507) do
     t.string "google_token"
     t.string "google_refresh_token"
     t.string "image"
+    t.bigint "search_id"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+    t.index ["search_id"], name: "index_users_on_search_id"
   end
 
   add_foreign_key "comments", "posts"

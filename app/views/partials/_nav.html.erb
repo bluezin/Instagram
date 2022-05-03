@@ -2,10 +2,33 @@
   class="p-2 bg-white shadow-md items-center sm:flex md:justify-around justify-between"
 >
   <h1 class="font-bold text-4xl home-h1 sm:m-auto mb-4">Instagram</h1>
-  <input
-    placeholder="🔍 Search"
-    class="p-1 bg-gray-100 outline-none rounded-md w-80 m-auto block"
-  />
+
+  <%# Search %>
+  <div class="relative">
+    <%= form_with locale: true, url: "/search/#{@user.search.id}" do |form| %>
+      <%= form.text_field :text, placeholder: "🔍 Search", class: "p-1 bg-gray-100 outline-none rounded-md w-80 m-auto block", onclick: "document.getElementById('results').style.display = 'block'" %>
+    <% end %>
+
+    <div class="hidden absolute bg-white shadow-lg w-80 mt-4 p-2 box-content" id="results">
+      <p class="flex items-center justify-between font-bold mb-4" onclick="document.getElementById('results').style.display = 'none'">Results <strong class="font-bold cursor-pointer">X</strong></p>
+      <%= tag.strong "Not results", class: "text-center block" if @user.search.results.length === 0 %>
+      <% @user.search.results.map do |item| %>
+      <div class="flex items-center gap-4 mt-4">
+        <% if item["image"].nil? %>
+          <div class="bg-purple-300 px-3 rounded-full w-7 h-7 flex items-center justify-center">
+            <strong class="cursor-pointer"> <%= item["name"].slice(0, 1) %> </strong>
+          </div>
+          <% else %>
+          <%= image_tag item["image"], class: "rounded-full w-7 h-7" %>
+        <% end %>
+        <%= tag.strong item["name"] %>
+      </div>
+      <% end %>
+      <%= link_to "Refresh results", "/", class: 'block mt-2 text-center bg-blue-200 p-1 rounded-sm' %>
+    </div>
+  </div>
+  <%#  %>
+
   <div class="flex justify-center items-center sm:m-auto mt-4 relative">
     <a href="/" class="mr-4">
       <%= image_tag "https://icongr.am/octicons/home-fill.svg?size=30&color=currentColor", style: "cursor: pointer" %>

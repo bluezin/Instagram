@@ -8,6 +8,7 @@ class CreateUsers < ActiveRecord::Migration[6.0]
       t.string :google_token
       t.string :google_refresh_token
       t.string :image
+      t.references :search
 
       t.timestamps
     end

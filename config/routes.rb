@@ -24,4 +24,7 @@ Rails.application.routes.draw do
 
   # google
   get '/auth/google_oauth2/callback', to: 'users#omniauth'
+
+  # search
+  post '/search/:search_id', to: 'search#search_results'
 end

@@ -2,17 +2,23 @@
 #
 # Table name: users
 #
-#  id              :bigint           not null, primary key
-#  email           :string           not null
-#  name            :string           not null
-#  password_digest :string
-#  created_at      :datetime         not null
-#  updated_at      :datetime         not null
+#  id                   :bigint           not null, primary key
+#  email                :string           not null
+#  name                 :string           not null
+#  password_digest      :string           not null
+#  uid                  :string
+#  google_token         :string
+#  google_refresh_token :string
+#  image                :string
+#  search_id            :bigint
+#  created_at           :datetime         not null
+#  updated_at           :datetime         not null
 #
 class User < ApplicationRecord
-  has_secure_password
   has_many :posts
+  belongs_to :search
 
+  has_secure_password
   validates :email, presence: true, format: { with: /\A[^@\s]+@[^@\s]+\z/ }
 
   def self.from_omniauth(auth)

@@ -19,7 +19,8 @@ class UsersController < ApplicationController
   end
 
   def sign_up
-    @user = User.new(params_user)
+    @search = Search.create
+    @user = User.new(params_user.merge(search_id: @search.id))
 
     if @user.save
       session[:user_id] = @user.id
@@ -45,6 +46,7 @@ class UsersController < ApplicationController
       refresh_token = auth.credentials.refresh_token
       user.google_refresh_token = refresh_token if refresh_token.present?
       user.password = SecureRandom.urlsafe_base64
+      user.search_id = Search.create.id
     end
     log_in @user
     redirect_to "/"
