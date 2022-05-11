@@ -10,10 +10,11 @@ Rails.application.routes.draw do
   delete 'users/logout'
 
   # post
-  post "/post/create", to: "posts#create"
+  get '/posts', to: "posts#index", format: "json"
+  post "/post/create", to: "posts#create", format: "json"
 
   # comment
-  post "/comment/create/:post_id", to: "comments#create"
+  post "/comment/create/:post_id", to: "comments#create", format: "json"
 
   #likes
   post "/like/:post_id", to: "likes#create"
@@ -26,5 +27,6 @@ Rails.application.routes.draw do
   get '/auth/google_oauth2/callback', to: 'users#omniauth'
 
   # search
+  get '/search/:search_id', to: 'search#index'
   post '/search/:search_id', to: 'search#search_results'
 end

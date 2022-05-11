@@ -2,8 +2,9 @@ class LikesController < ApplicationController
   def create
     @like = Like.new(user_id: Current.user.id, post_id: params[:post_id])
 
-    @like.save
-    redirect_to "/"
+    if @like.save
+      render json: Post.find(params[:post_id]).likes
+    end
   end
 
   def destroy
@@ -14,7 +15,7 @@ class LikesController < ApplicationController
 
       if @like_post.present?
         @like_post.destroy
-        redirect_to "/"
+        render json: Post.find(params[:post_id]).likes
       end
     end
   end

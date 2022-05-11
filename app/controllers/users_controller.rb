@@ -33,7 +33,7 @@ class UsersController < ApplicationController
   def logout
     session[:user_id] = nil
 
-    redirect_to users_new_path
+    render json: "Logout"
   end
 
   def omniauth
