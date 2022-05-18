@@ -22,6 +22,7 @@ Rails.application.routes.draw do
 
   # profile
   get "/profile", to: "profiles#index"
+  get "/profile/:id", to: "profiles#show"
 
   # google
   get '/auth/google_oauth2/callback', to: 'users#omniauth'

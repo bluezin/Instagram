@@ -107,7 +107,7 @@ const Nav = ({ user, setModalPost, element }) => {
             className="absolute top-12 left-24 bg-white shadow-lg w-4/6 box-border text-center p-2"
             id="info"
           >
-            <a href="/profile" className="block">
+            <a href={`/profile/${user.id}`} className="block">
               Profile
             </a>
             <div className="border-t-2 mt-4 border-gray-200 border-solid">

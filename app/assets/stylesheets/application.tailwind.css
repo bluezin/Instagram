@@ -4,7 +4,7 @@
 
 body {
   overflow-x: hidden;
-  font-family: 'Source Sans Pro', sans-serif;
+  font-family: "Source Sans Pro", sans-serif;
 }
 
 .home-h1 {
@@ -43,14 +43,45 @@ body {
   margin: 20px auto;
 }
 
+/* Profile */
+
+.profile-post {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  justify-content: center;
+  gap: 40px;
+  margin-top: 50px;
+}
+
+.profile-post div {
+  display: flex;
+  border-radius: 10px;
+}
+
+.profile-post div img {
+  width: 100%;
+  height: 300px;
+  border-radius: 10px;
+}
+
 @media screen and (max-width: 480px) {
   .container-login {
     width: 80%;
   }
 }
 
+@media screen and (max-width: 1320px) {
+  .profile-post {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
 @media screen and (max-width: 680px) {
   .container-posts {
     width: 90%;
+  }
+
+  .profile-post {
+    grid-template-columns: repeat(1, 1fr);
   }
 }
