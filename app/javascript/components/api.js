@@ -22,7 +22,7 @@ const searchData = async ({ search_id }) => {
 };
 
 const postCreate = async ({ newData }) => {
-  const request = await axios.post("http://localhost:3000/post/create", {
+  const request = await axios.post("https://instagramruby.herokuapp.com/post/create", {
     ...newData,
   });
   const data = await request.data;
