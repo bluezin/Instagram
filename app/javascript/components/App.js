@@ -24,7 +24,7 @@ const App = ({ user, setModalPost, modalPost, setElement }) => {
         {modalPost && (
           <Form user={user} setModalOpen={setModalPost} setPost={setPost} />
         )}
-        {post.length > 1 &&
+        {post.length > 0 &&
           post.map((item) => <Post {...item} key={item.id} current={user} />)}
       </div>
     </div>
