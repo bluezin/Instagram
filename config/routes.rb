@@ -30,4 +30,8 @@ Rails.application.routes.draw do
   # search
   get '/search/:search_id', to: 'search#index'
   post '/search/:search_id', to: 'search#search_results'
+
+  # history
+  get "/histories", to: "history#index", format: "json"
+  post "/history", to: "history#create"
 end

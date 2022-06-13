@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import { searchResults, searchData, userLogout } from "./api";
+import { searchResults, searchData, userLogout } from "../api/index";
 
 const Nav = ({ user, setModalPost, element }) => {
   const [results, setResults] = useState([]);
@@ -48,13 +48,13 @@ const Nav = ({ user, setModalPost, element }) => {
         />
 
         {results.length === 0 && click && (
-          <div className="absolute bg-white shadow-lg w-80 mt-4 p-2 box-content">
+          <div className="absolute bg-white shadow-lg w-80 mt-4 p-2 box-content zi-10">
             <strong className="text-center block">Not Results</strong>
           </div>
         )}
 
         {click && results.length >= 1 && (
-          <div className="absolute bg-white shadow-lg w-80 mt-4 p-2 box-border">
+          <div className="absolute bg-white shadow-lg w-80 mt-4 p-2 box-border zi-10">
             {results.map((item, index) => (
               <div
                 className="flex items-center gap-4 mt-4"
@@ -81,7 +81,12 @@ const Nav = ({ user, setModalPost, element }) => {
             className="cusor-pointer"
           />
         </a>
-        <div onClick={() => setModalPost(true)}>
+        <div
+          onClick={() => {
+            setModalPost(true);
+            document.body.style.overflow = "hidden";
+          }}
+        >
           <img
             src="https://icongr.am/feather/plus-square.svg?size=30&color=currentColor"
             className="cursor-pointer"
@@ -105,7 +110,7 @@ const Nav = ({ user, setModalPost, element }) => {
         {openModal && (
           <div
             className="absolute top-12 left-24 bg-white shadow-lg w-4/6 box-border text-center p-2"
-            id="info"
+            // id="info"
           >
             <a href={`/profile/${user.id}`} className="block">
               Profile

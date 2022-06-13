@@ -7,6 +7,10 @@ body {
   font-family: "Source Sans Pro", sans-serif;
 }
 
+.wp-500 {
+  width: 500px;
+}
+
 .home-h1 {
   font-family: "Cookie", cursive;
 }
@@ -64,6 +68,78 @@ body {
   border-radius: 10px;
 }
 
+.wt-60 {
+  width: 60px;
+}
+
+.ht-60 {
+  height: 60px;
+}
+
+.ms-20 {
+  margin: 20px;
+}
+
+.border-instagram {
+  padding: 3px;
+  background: linear-gradient(
+    45deg,
+    #f09433 20%,
+    #e6683c 25%,
+    #dc2743 40%,
+    #cc2366 75%,
+    #bc1888 100%
+  );
+}
+
+.zi-10 {
+  z-index: 10;
+}
+
+.listHistories {
+  display: flex;
+  width: 600px;
+  margin: 30px auto;
+  border-radius: 10px;
+  padding: 10px;
+  gap: 20px;
+  overflow: hidden;
+}
+
+.listHistories div {
+  transition: transform 800ms ease;
+}
+
+.bg-black-opacity {
+  background-color: rgb(63, 61, 61);
+}
+
+.historyOpen {
+  border-radius: 10px;
+  background-color: rgba(0, 0, 0, 0.2);
+  height: 600px;
+}
+
+.historyOpen .history-img {
+  position: absolute;
+  right: 0;
+  left: 0;
+  top: 0;
+  bottom: 0;
+  margin: auto;
+  padding: 10px;
+}
+
+.historyOpen video {
+  height: 500px;
+  position: absolute;
+  right: 0;
+  left: 0;
+  top: 20px;
+  bottom: 0;
+  margin: auto;
+}
+
 @media screen and (max-width: 480px) {
   .container-login {
     width: 80%;
@@ -83,5 +159,13 @@ body {
 
   .profile-post {
     grid-template-columns: repeat(1, 1fr);
+  }
+
+  .listHistories {
+    width: 90%;
+  }
+
+  .wp-500 {
+    width: 90%;
   }
 }

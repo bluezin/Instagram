@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
 import { useForm } from "react-hook-form";
-import { postCreate } from "./api";
+import { fetchImage, postCreate } from "../api/index";
 
 const Form = ({ user, setModalOpen, setPost }) => {
   const [state, setState] = useState({
@@ -11,18 +11,6 @@ const Form = ({ user, setModalOpen, setPost }) => {
   });
   const { handleSubmit, register } = useForm();
   const { description, click, image } = state;
-
-  const fetchImage = async (formData) => {
-    const res = await fetch(
-      "https://api.cloudinary.com/v1_1/dzkhw6nzm/image/upload",
-      {
-        method: "POST",
-        body: formData,
-      }
-    );
-    const data = res.json();
-    return data;
-  };
 
   const onSubmit = (data) => {
     const formData = new FormData();
@@ -59,7 +47,10 @@ const Form = ({ user, setModalOpen, setPost }) => {
         id="form"
       >
         <button
-          onClick={() => setModalOpen(false)}
+          onClick={() => {
+            setModalOpen(false);
+            document.body.style.overflow = "auto";
+          }}
           className="absolute right-5 top-4 cursor-pointer"
         >
           X

@@ -16,6 +16,7 @@
 #
 class User < ApplicationRecord
   has_many :posts
+  has_many :histories
   belongs_to :search
 
   has_secure_password

@@ -1,11 +1,11 @@
 import React, { useState, useEffect } from "react";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
-import { getUser } from "./api";
+import { getUser } from "../api/index";
 import App from "./App";
 import Layaout from "./Layaout";
 import Profile from "./Profile";
 
-const AppRoutes = (props) => {
+const AppRoutes = () => {
   const [user, setUser] = useState();
   const [modalPost, setModalPost] = useState(false);
   const [element, setElement] = useState("");

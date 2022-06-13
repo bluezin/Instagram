@@ -1,23 +1,27 @@
 import React, { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
-import { getUser } from "./api";
+import { getUser } from "../api/index";
+import History from "./History";
+import NewHistory from "./NewHistory";
 
 const Profile = () => {
-  const [state, setState] = useState({ user: {}, posts: [] });
+  const [state, setState] = useState({
+    user: {},
+    posts: [],
+    modalHistory: false,
+  });
   const params = useParams();
 
   useEffect(() => {
     if (params.id) {
       getUser().then((data) =>
-        setState({ user: data.user, posts: data.posts })
+        setState({ ...state, user: data.user, posts: data.posts })
       );
     }
   }, [params.id]);
 
-  console.log(state.posts);
-
   return (
-    <section>
+    <section className="">
       <div className="mt-10 profile-container">
         <div className="flex items-center sm:ml-20 gap-4">
           {!state.user?.image ? (
@@ -41,6 +45,14 @@ const Profile = () => {
               {state.posts.length}
               <span className="">Posts</span>
             </strong>
+            <div>
+              <button
+                className="bg-blue-200 p-2 mt-4 rounded text-sm"
+                onClick={() => setState({ ...state, modalHistory: true })}
+              >
+                Add History
+              </button>
+            </div>
           </div>
         </div>
 
@@ -52,6 +64,8 @@ const Profile = () => {
           ))}
         </div>
       </div>
+
+      {state.modalHistory && <NewHistory state={state} setState={setState} />}
     </section>
   );
 };

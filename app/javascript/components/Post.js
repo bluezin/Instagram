@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import { useForm } from "react-hook-form";
-import { commentCreate, likeCreate, likeDelete } from "./api";
+import { commentCreate, likeCreate, likeDelete } from "../api/index";
 import moment from "moment";
 
 const Post = ({ user, image, description, likes, current, comments, id }) => {

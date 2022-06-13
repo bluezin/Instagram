@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from "react";
-import { posts } from "./api";
+import { posts } from "../api/index";
 import Form from "./Form";
+import ListHistories from "./ListHistories";
 import Post from "./Post";
 
 const App = ({ user, setModalPost, modalPost, setElement }) => {
@@ -20,6 +21,7 @@ const App = ({ user, setModalPost, modalPost, setElement }) => {
 
   return (
     <div>
+      <ListHistories />
       <div id="section">
         {modalPost && (
           <Form user={user} setModalOpen={setModalPost} setPost={setPost} />
