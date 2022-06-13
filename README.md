@@ -6,4 +6,4 @@
 
 ## Adding improvements
 
-![image](./instagra.png)
+![image](./instagram.png)
