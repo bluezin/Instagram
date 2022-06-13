@@ -4,15 +4,7 @@ import Form from "./Form";
 import ListHistories from "./ListHistories";
 import Post from "./Post";
 
-const App = ({ user, setModalPost, modalPost, setElement }) => {
-  const [post, setPost] = useState([]);
-
-  useEffect(() => {
-    if (user) {
-      posts().then((data) => setPost(data));
-    }
-  }, [user]);
-
+const App = ({ user, post, setElement }) => {
   useEffect(() => {
     setElement(document.getElementById("section"));
   }, []);
@@ -23,9 +15,6 @@ const App = ({ user, setModalPost, modalPost, setElement }) => {
     <div id="section">
       <ListHistories />
       <div>
-        {modalPost && (
-          <Form user={user} setModalOpen={setModalPost} setPost={setPost} />
-        )}
         {post.length > 0 &&
           post.map((item) => <Post {...item} key={item.id} current={user} />)}
       </div>

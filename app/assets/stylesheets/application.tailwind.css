@@ -11,6 +11,10 @@ body {
   width: 500px;
 }
 
+.hv-100 {
+  height: 100vh;
+}
+
 .home-h1 {
   font-family: "Cookie", cursive;
 }

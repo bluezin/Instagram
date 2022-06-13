@@ -1,10 +1,9 @@
 import React, { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 import { getUser } from "../api/index";
-import History from "./History";
 import NewHistory from "./NewHistory";
 
-const Profile = () => {
+const Profile = ({ setElement }) => {
   const [state, setState] = useState({
     user: {},
     posts: [],
@@ -20,8 +19,12 @@ const Profile = () => {
     }
   }, [params.id]);
 
+  useEffect(() => {
+    setElement(document.getElementById("section"));
+  }, []);
+
   return (
-    <section className="">
+    <section id="section" style={{ height: "100vh" }}>
       <div className="mt-10 profile-container">
         <div className="flex items-center sm:ml-20 gap-4">
           {!state.user?.image ? (
