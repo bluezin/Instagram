@@ -21,7 +21,7 @@ const Nav = ({ user, setModalPost, element }) => {
   };
 
   const handleLogout = () => {
-    userLogout().then((data) => {
+    userLogout().then(() => {
       window.location.pathname = "/users/new";
     });
   };

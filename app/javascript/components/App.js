@@ -20,9 +20,9 @@ const App = ({ user, setModalPost, modalPost, setElement }) => {
   if (!user) return null;
 
   return (
-    <div>
+    <div id="section">
       <ListHistories />
-      <div id="section">
+      <div>
         {modalPost && (
           <Form user={user} setModalOpen={setModalPost} setPost={setPost} />
         )}
