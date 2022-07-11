@@ -1,6 +1,4 @@
-import React, { useEffect, useState } from "react";
-import { posts } from "../api/index";
-import Form from "./Form";
+import React, { useEffect } from "react";
 import ListHistories from "./ListHistories";
 import Post from "./Post";
 
