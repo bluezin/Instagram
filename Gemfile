@@ -1,7 +1,7 @@
 source 'https://rubygems.org'
 git_source(:github) { |repo| "https://github.com/#{repo}.git" }
 
-ruby '2.6.6'
+ruby '3.0.0'
 
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails', branch: 'main'
 gem 'rails', '~> 6.0.4', '>= 6.0.4.7'
@@ -29,8 +29,7 @@ gem 'jbuilder', '~> 2.7'
 gem 'bootsnap', '>= 1.4.2', require: false
 # bcrypt
 gem 'bcrypt', '~> 3.1.7'
-# paperclip
-gem "paperclip"
+
 # omniauth
 gem 'omniauth'
 # dotenv-rails
@@ -67,3 +66,17 @@ end
 gem 'tzinfo-data', platforms: [:mingw, :mswin, :x64_mingw, :jruby]
 
 gem "tailwindcss-rails", "~> 2.0"
+
+gem "dockerfile-rails", ">= 1.6", :group => :development
+
+gem "sentry-ruby", "~> 5.16"
+
+gem "sentry-rails", "~> 5.16"
+
+gem "net-smtp", "~> 0.4.0", :require => false
+
+gem "net-imap", "~> 0.3.7", :require => false
+
+gem 'mimemagic'
+
+gem 'paperclip'
