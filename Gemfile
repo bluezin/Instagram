@@ -77,6 +77,4 @@ gem "net-smtp", "~> 0.4.0", :require => false
 
 gem "net-imap", "~> 0.3.7", :require => false
 
-gem 'mimemagic'
 
-gem 'paperclip'
