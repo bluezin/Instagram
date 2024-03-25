@@ -1,8 +1,6 @@
-# Clon of Instagram
+# Video
 
-- Versions
-  - 0.1.0
-  - 0.2.0
+https://www.loom.com/share/8ddb48acd09b43d9ae77771067cdcdd8
 
 ## Adding improvements
 
