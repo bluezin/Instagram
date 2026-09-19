@@ -5,14 +5,15 @@ image: yadiracondezo/instagram
 servers:
   web:
     hosts:
-      - 138.199.144.25
+      - instagram-web.duckdns.org
     cmd: "./bin/rails server -b 0.0.0.0 -p 3000"
 
 ssh:
   user: root
 
 proxy:
-  ssl: false
+  host: instagram-web.duckdns.org
+  ssl: true
   app_port: 3000
   healthcheck:
     path: /up
