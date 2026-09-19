@@ -1,0 +1,64 @@
+service: instagram
+
+image: yadiracondezo/instagram
+
+servers:
+  web:
+    hosts:
+      - 138.199.144.25
+    cmd: "./bin/rails server -b 0.0.0.0 -p 3000"
+
+ssh:
+  user: root
+
+proxy:
+  ssl: false
+  app_port: 3000
+  healthcheck:
+    path: /up
+    interval: 3
+    timeout: 10
+
+registry:
+  username: yadiracondezo
+  password:
+    - DOCKER_PASSWORD
+
+env:
+  clear:
+    RAILS_ENV: production
+    RAILS_SERVE_STATIC_FILES: "1"
+    RAILS_LOG_TO_STDOUT: "1"
+    RAILS_MAX_THREADS: "3"
+    WEB_CONCURRENCY: "1"
+  secret:
+    - RAILS_MASTER_KEY
+    - DATABASE_URL
+    - GOOGLE_CLIENT_ID
+    - GOOGLE_CLIENT_SECRET
+    - CLOUDINARY_URL
+    - cloud_name
+    - cloud_api_key
+    - cloud_api_secret
+
+builder:
+  arch: amd64
+  remote: ssh://root@138.199.144.25
+  cache:
+    type: registry
+    options: mode=max
+    image: yadiracondezo/instagram:build-cache
+
+accessories:
+  postgres:
+    image: postgres:14-alpine
+    host: 138.199.144.25
+    port: "127.0.0.1:5432:5432"
+    env:
+      clear:
+        POSTGRES_USER: instagram
+        POSTGRES_DB: instagram_production
+      secret:
+        - POSTGRES_PASSWORD
+    directories:
+      - data:/var/lib/postgresql/data
