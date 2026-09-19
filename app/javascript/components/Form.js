@@ -43,7 +43,8 @@ const Form = ({ user, setModalOpen, setPost }) => {
     <div className="flex justify-center items-center p-10 absolute right-0 left-0 top-0 bottom-0 bg-opacity-30 bg-black">
       <form
         onSubmit={handleSubmit(onSubmit)}
-        className="bg-white p-4 w-3/6 m-auto flex justify-center flex-col relative"
+        style={{ zIndex: "100" }}
+        className="bg-white p-4 w-[400px] sm:w-[90%] m-auto flex justify-center flex-col relative"
         id="form"
       >
         <button
