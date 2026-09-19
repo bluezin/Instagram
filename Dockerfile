@@ -24,7 +24,10 @@ RUN gem update --system 3.4.22 --no-document && \
 FROM base as build
 
 # Install packages needed to build gems and node modules
-RUN apt-get update -qq && \
+# (buster is EOL: point apt at archive.debian.org)
+RUN sed -i "s|deb.debian.org|archive.debian.org|g; s|security.debian.org|archive.debian.org|g" /etc/apt/sources.list && \
+    echo 'Acquire::Check-Valid-Until "false";' > /etc/apt/apt.conf.d/99no-check-valid-until && \
+    apt-get update -qq && \
     apt-get install --no-install-recommends -y build-essential curl libpq-dev node-gyp pkg-config python
 
 # Install JavaScript dependencies
@@ -61,7 +64,10 @@ RUN SECRET_KEY_BASE=DUMMY ./bin/rails assets:precompile
 FROM base
 
 # Install packages needed for deployment
-RUN apt-get update -qq && \
+# (buster is EOL: point apt at archive.debian.org)
+RUN sed -i "s|deb.debian.org|archive.debian.org|g; s|security.debian.org|archive.debian.org|g" /etc/apt/sources.list && \
+    echo 'Acquire::Check-Valid-Until "false";' > /etc/apt/apt.conf.d/99no-check-valid-until && \
+    apt-get update -qq && \
     apt-get install --no-install-recommends -y curl postgresql-client && \
     rm -rf /var/lib/apt/lists /var/cache/apt/archives
 
