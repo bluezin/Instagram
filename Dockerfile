@@ -16,8 +16,8 @@ ENV BUNDLE_DEPLOYMENT="1" \
     RAILS_ENV="production"
 
 # Update gems and bundler
-RUN gem update --system --no-document && \
-    gem install -N bundler
+RUN gem update --system 3.4.22 --no-document && \
+    gem install -N bundler --version 2.5.5
 
 
 # Throw-away build stage to reduce size of final image
